@@ -24,8 +24,16 @@ public class SMTPConnection {
        associated streams. Initialize SMTP connection. */
     public SMTPConnection(Envelope envelope) throws IOException {
         // connection = /* Fill in */;
-        fromServer = /* Fill in */;
-        toServer =   /* Fill in */;
+        //makes connection to given server datacomm.bhsi.xyz, with port number 2526
+        String server ="datacomm.bhsi.xyz";
+        int port=2526;
+        Socket Connection=new Socket(server,port);
+
+        //setting up streams for reading and writing data over the established connection
+        fromServer =new BufferedReader(new InputStreamReader((connection.getInputStream())))
+        /* Fill in */;
+        toServer = new DataOutputStream(Connection.getOutputStream());
+        /* Fill in */;
 
         /* Fill in */
 	/* Read a line from server and check that the reply code is 220.
