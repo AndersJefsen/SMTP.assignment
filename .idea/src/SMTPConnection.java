@@ -23,23 +23,25 @@ public class SMTPConnection {
     /* Create an SMTPConnection object. Create the socket and the 
        associated streams. Initialize SMTP connection. */
     public SMTPConnection(Envelope envelope) throws IOException {
-        // connection = /* Fill in */;
-        //makes connection to given server datacomm.bhsi.xyz, with port number 2526
+        //makes connection to given server "datacomm.bhsi.xyz," with port number 2526. using socket class from java.net
         String server ="datacomm.bhsi.xyz";
         int port=2526;
         Socket Connection=new Socket(server,port);
 
         //setting up streams for reading and writing data over the established connection
-        fromServer =new BufferedReader(new InputStreamReader((connection.getInputStream())))
-        /* Fill in */;
+        fromServer =new BufferedReader(new InputStreamReader((connection.getInputStream())));
         toServer = new DataOutputStream(Connection.getOutputStream());
-        /* Fill in */;
 
-        /* Fill in */
+
+
+
 	/* Read a line from server and check that the reply code is 220.
 	   If not, throw an IOException. */
-        /* Fill in */
-
+//using bufferedreader readline
+String reply=fromServer.readLine();
+if(!reply.startsWith("220")){
+    throw new IOException("Invalid reply from server:" + reply);
+}
 	/* SMTP handshake. We need the name of the local machine.
 	   Send the appropriate SMTP handshake command. */
         String localhost = /* Fill in */;
