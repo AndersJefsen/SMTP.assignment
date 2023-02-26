@@ -32,9 +32,6 @@ public class SMTPConnection {
         fromServer =new BufferedReader(new InputStreamReader((connection.getInputStream())));
         toServer = new DataOutputStream(Connection.getOutputStream());
 
-
-
-
 	/* Read a line from server and check that the reply code is 220.
 	   If not, throw an IOException. */
 //using bufferedreader readline
@@ -44,8 +41,8 @@ if(!reply.startsWith("220")){
 }
 	/* SMTP handshake. We need the name of the local machine.
 	   Send the appropriate SMTP handshake command. */
-        String localhost = /* Fill in */;
-        sendCommand( /* Fill in */ );
+        String localhost = InetAddress.getLocalHost().getHostAddress();
+        sendCommand(localhost,250);
 
         isConnected = true;
     }
